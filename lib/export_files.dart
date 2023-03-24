@@ -1,4 +1,12 @@
 export 'package:flutter/material.dart';
 export 'package:todo/app.dart';
-export 'views/1_onboarding/onboarding_view.dart';
 export 'package:flutter_screenutil/flutter_screenutil.dart';
+export 'package:get/get.dart';
+export 'package:todo/views/1_splash/splash_view.dart';
+export 'package:todo/routes/app_routes.dart';
+export 'package:todo/utils/app_icons.dart';
+export 'package:todo/utils/app_colors.dart';
+export 'package:todo/views/2_home/home_view.dart';
+export 'package:todo/views/3_tasks/tasks_view.dart';
+export 'package:flutter_svg/flutter_svg.dart';
+export 'package:todo/views/bottom_bar.dart';

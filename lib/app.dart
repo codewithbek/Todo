@@ -8,13 +8,15 @@ class ToDoApp extends StatelessWidget {
       designSize: const Size(360, 800),
       minTextAdapt: true,
       splitScreenMode: true,
-      builder:(context, child) {
-        return MaterialApp(
+      builder: (context, child) {
+        return GetMaterialApp(
           title: 'To Do app for Udevs',
+          debugShowCheckedModeBanner: false,
           theme: ThemeData(
             primarySwatch: Colors.blue,
           ),
-          home: OnBoardingView(),
+          initialRoute: AppRoutes.splash,
+          getPages: AppRoutes.routes,
         );
       },
     );
