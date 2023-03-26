@@ -1,25 +1,58 @@
+import 'package:flutter/cupertino.dart';
 import 'package:todo/export_files.dart';
-import 'package:todo/widgets/sized_text.dart';
 
-class BottomBarView extends StatefulWidget {
-  const BottomBarView({super.key});
+class FullView extends StatefulWidget {
+  const FullView({super.key});
 
   @override
-  State<BottomBarView> createState() => _BottomBarViewState();
+  State<FullView> createState() => _FullViewState();
 }
 
-class _BottomBarViewState extends State<BottomBarView> {
+class _FullViewState extends State<FullView> {
   bool isSelected = false;
   int currentIndex = 0;
+  int currentId = 1;
+
   List<Widget> screens = [const HomeView(), const TasksView()];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        toolbarHeight: 80.h,
+        elevation: 0,
+        title: Text(
+          "Hello Brenda!\nToday you have 9 tasks",
+          style: GoogleFonts.rubik(fontSize: 18.sp, color: Colors.white),
+        ),
+        actions: [
+          CircleAvatar(
+            backgroundColor: Colors.white,
+            radius: 20.r,
+            child: Icon(
+              CupertinoIcons.person_fill,
+              size: 20.sp,
+            ),
+          ),
+          SizedBox(
+            width: 10.w,
+          )
+        ],
+        flexibleSpace: Container(
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(
+              colors: AppColors.appBarGradient,
+              stops: [0.5, 1.0],
+            ),
+          ),
+        ),
+      ),
       resizeToAvoidBottomInset: false,
       body: screens[currentIndex],
       bottomNavigationBar: buildBottomBar(),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      floatingActionButton: CricleButton(
+        iconPath: AppIcons.add,
+        onTap: () {},
       ),
     );
   }

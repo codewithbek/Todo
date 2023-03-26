@@ -4,6 +4,8 @@ class ToDoApp extends StatelessWidget {
   const ToDoApp({super.key});
   @override
   Widget build(BuildContext context) {
+    final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
+    LocalNotificationService.localNotificationService.init(navigatorKey);
     return ScreenUtilInit(
       designSize: const Size(360, 800),
       minTextAdapt: true,
@@ -17,6 +19,7 @@ class ToDoApp extends StatelessWidget {
           ),
           initialRoute: AppRoutes.splash,
           getPages: AppRoutes.routes,
+          navigatorKey: navigatorKey,
         );
       },
     );

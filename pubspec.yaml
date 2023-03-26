@@ -22,6 +22,9 @@ dependencies:
   get_storage: ^2.1.1
   flutter_native_timezone: ^2.0.0
   get: ^4.6.5
+  intl: ^0.18.0
+  google_fonts: ^4.0.3
+  # modal_bottom_sheet: ^2.1.2
 
 dev_dependencies:
   flutter_test:

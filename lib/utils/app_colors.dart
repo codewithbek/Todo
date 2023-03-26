@@ -19,6 +19,8 @@ class AppColors {
   static const C_66C81C = Color(0xFF66C81C);
   static const C_FCFCFC = Color(0xFFFCFCFC);
   static const C_E0E0E0 = Color(0xFFE0E0E0);
+  static const C_F456C3 = Color(0xFFF456C3);
+  static const C_6894EE = Color(0xFF6894EE);
 
   // Gradients
   static const List<Color> splashButtonGradient = [
@@ -28,6 +30,10 @@ class AppColors {
   static const List<Color> appBarGradient = [
     Color(0xFF81C7F5),
     Color(0xFF3867D5),
+  ];
+  static const List<Color> addTaskGradient = [
+    Color(0xFF7EB6FF),
+    Color(0xFF5F87E7),
   ];
   static const List<Color> floatButtonGradient = [
     Color(0xFFF857C3),

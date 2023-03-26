@@ -5,8 +5,6 @@ class TasksView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text("Tasks"),),
-    );
+    return Scaffold();
   }
 }

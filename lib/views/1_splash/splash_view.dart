@@ -28,7 +28,7 @@ class SplashView extends StatelessWidget {
               SizedBox(height: 171.h),
               TextButton(
                 onPressed: () {
-                  Get.offAndToNamed(AppRoutes.bottomBar);
+                  Get.offAndToNamed(AppRoutes.fullView);
                 },
                 child: Container(
                   width: 258.w,
