@@ -51,7 +51,7 @@ class _FullViewState extends State<FullView> {
                 borderRadius: BorderRadius.circular(5.r),
               ),
               child: Padding(
-                padding: EdgeInsets.only(left: 16.0.w),
+                padding: EdgeInsets.only(left: 16.0.w, top: 9.h, right: 11.w),
                 child: Column(
                   children: [
                     Row(
@@ -65,10 +65,9 @@ class _FullViewState extends State<FullView> {
                             fontWeight: FontWeight.w500,
                           ),
                         ),
-                        IconButton(
-                          iconSize: 20,
-                          onPressed: () {},
-                          icon: const Icon(
+                        InkWell(
+                          onTap: () {},
+                          child: const Icon(
                             CupertinoIcons.clear,
                           ),
                         ),

@@ -20,4 +20,7 @@ class AppIcons {
   static const String tasks2 = "assets/icons/tasks2.svg";
   static const String work = "assets/icons/work.svg";
   static const String close = "assets/icons/close.svg";
+    static const String circle = "assets/icons/circle.svg";
+  static const String checked = "assets/icons/checked.svg";
+
 }
