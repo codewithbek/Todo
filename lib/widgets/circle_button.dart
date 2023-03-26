@@ -3,15 +3,16 @@ import 'package:todo/export_files.dart';
 class CricleButton extends StatelessWidget {
   const CricleButton({
     super.key,
-    required this.onTap, required this.iconPath,
+    required this.onTap,
+    required this.iconPath,
   });
   final VoidCallback onTap;
   final String iconPath;
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onTap,
+    return FloatingActionButton(
+      onPressed: onTap,
       child: Container(
         height: 53.h,
         width: 53.h,

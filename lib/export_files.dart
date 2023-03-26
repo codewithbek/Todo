@@ -16,3 +16,5 @@ export 'package:todo/widgets/circle_button.dart';
 export 'package:todo/widgets/sized_text.dart';
 export 'package:google_fonts/google_fonts.dart';
 export 'package:todo/widgets/addtask_button.dart';
+export 'package:todo/widgets/started_button.dart';
+export 'package:todo/views/2_home/components/no_task.dart';

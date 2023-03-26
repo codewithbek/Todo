@@ -1,7 +1,7 @@
 import 'package:todo/export_files.dart';
 
-class AddTaskButton extends StatelessWidget {
-  const AddTaskButton({
+class GetStartedButton extends StatelessWidget {
+  const GetStartedButton({
     super.key,
     required this.onTap,
   });
@@ -9,29 +9,31 @@ class AddTaskButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onTap,
+    return MaterialButton(
+      onPressed: onTap,
       child: Container(
-        width: 323.w,
-        height: 56.h,
+        width: 258.w,
+        height: 56.29.h,
         decoration: BoxDecoration(
           gradient: const LinearGradient(
-            colors: AppColors.addTaskGradient,
+            colors: AppColors.splashButtonGradient,
           ),
           borderRadius: BorderRadius.circular(10.r),
-          boxShadow: const [
+          boxShadow: [
             BoxShadow(
-              color: AppColors.C_6894EE,
-              blurRadius: 6.0,
-              spreadRadius: 0,
-              offset: Offset(0, 3),
+              color: AppColors.C_66C81C.withOpacity(0.53),
+              blurRadius: 30.0, // soften the shadow
+              spreadRadius: 0, //extend the shadow
+              offset: const Offset(
+                  0, // Move to right 10  horizontally
+                  5),
             ),
           ],
         ),
         child: Center(
           child: Text(
-            "Add task",
-            style: GoogleFonts.rubik(
+            "Get Started",
+            style: TextStyle(
                 fontSize: 15.sp,
                 fontWeight: FontWeight.w400,
                 color: AppColors.C_FCFCFC),

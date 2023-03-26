@@ -18,29 +18,113 @@ class _FullViewState extends State<FullView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        toolbarHeight: 80.h,
+        toolbarHeight: 190.h,
         elevation: 0,
-        title: Text(
-          "Hello Brenda!\nToday you have 9 tasks",
-          style: GoogleFonts.rubik(fontSize: 18.sp, color: Colors.white),
-        ),
-        actions: [
-          CircleAvatar(
-            backgroundColor: Colors.white,
-            radius: 20.r,
-            child: Icon(
-              CupertinoIcons.person_fill,
-              size: 20.sp,
+        title: Column(
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  "Hello Brenda!\nToday you have 9 tasks",
+                  style:
+                      GoogleFonts.rubik(fontSize: 18.sp, color: Colors.white),
+                ),
+                CircleAvatar(
+                  backgroundColor: Colors.white,
+                  radius: 20.r,
+                  child: Icon(
+                    CupertinoIcons.person_fill,
+                    size: 20.sp,
+                  ),
+                ),
+              ],
             ),
-          ),
-          SizedBox(
-            width: 10.w,
-          )
-        ],
+            SizedBox(
+              height: 13.h,
+            ),
+            Container(
+              height: 110.h,
+              width: 339.w,
+              decoration: BoxDecoration(
+                color: Colors.white.withOpacity(0.31),
+                borderRadius: BorderRadius.circular(5.r),
+              ),
+              child: Padding(
+                padding: EdgeInsets.only(left: 16.0.w),
+                child: Column(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          "Today Reminder",
+                          style: GoogleFonts.rubik(
+                            color: Colors.white,
+                            fontSize: 20.sp,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                        IconButton(
+                          iconSize: 20,
+                          onPressed: () {},
+                          icon: const Icon(
+                            CupertinoIcons.clear,
+                          ),
+                        ),
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "Meeting with client",
+                              style: GoogleFonts.rubik(
+                                color: AppColors.C_F3F3F3,
+                                fontSize: 11.sp,
+                                fontWeight: FontWeight.w400,
+                              ),
+                            ),
+                            SizedBox(
+                              height: 10.h,
+                            ),
+                            Text(
+                              "13.00 PM",
+                              style: GoogleFonts.rubik(
+                                color: AppColors.C_F3F3F3,
+                                fontSize: 11.sp,
+                                fontWeight: FontWeight.w400,
+                              ),
+                            ),
+                          ],
+                        ),
+                        Padding(
+                          padding: EdgeInsets.only(
+                            right: 40.0.w,
+                          ),
+                          child: SvgPicture.asset(
+                            AppIcons.bigbell,
+                            height: 60.h,
+                            width: 52.w,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
         flexibleSpace: Container(
           decoration: const BoxDecoration(
             gradient: LinearGradient(
               colors: AppColors.appBarGradient,
+              begin: Alignment.topRight,
+              end: Alignment.bottomLeft,
               stops: [0.5, 1.0],
             ),
           ),
@@ -52,7 +136,24 @@ class _FullViewState extends State<FullView> {
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: CricleButton(
         iconPath: AppIcons.add,
-        onTap: () {},
+        onTap: () {
+          showModalBottomSheet(
+            shape: const RoundedRectangleBorder(
+              borderRadius: BorderRadius.vertical(
+                top: Radius.circular(30),
+              ),
+            ),
+            context: context,
+            builder: (context) => Center(
+              child: CricleButton(
+                onTap: () {
+                  Navigator.pop(context);
+                },
+                iconPath: AppIcons.close,
+              ),
+            ),
+          );
+        },
       ),
     );
   }

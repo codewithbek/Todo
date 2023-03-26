@@ -17,7 +17,7 @@ class ToDoApp extends StatelessWidget {
           theme: ThemeData(
             primarySwatch: Colors.blue,
           ),
-          initialRoute: AppRoutes.splash,
+          initialRoute: AppRoutes.fullView,
           getPages: AppRoutes.routes,
           navigatorKey: navigatorKey,
         );

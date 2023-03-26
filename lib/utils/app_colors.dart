@@ -21,6 +21,7 @@ class AppColors {
   static const C_E0E0E0 = Color(0xFFE0E0E0);
   static const C_F456C3 = Color(0xFFF456C3);
   static const C_6894EE = Color(0xFF6894EE);
+  static const C_F3F3F3 = Color(0xFFF3F3F3);
 
   // Gradients
   static const List<Color> splashButtonGradient = [
