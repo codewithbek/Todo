@@ -16,6 +16,9 @@ class _FullViewState extends State<FullView> {
   List<Widget> screens = [const HomeView(), const TasksView()];
   @override
   Widget build(BuildContext context) {
+    double height = MediaQuery.of(context).size.height;
+    double width = MediaQuery.of(context).size.width;
+
     return Scaffold(
       appBar: AppBar(
         toolbarHeight: 190.h,
@@ -41,10 +44,10 @@ class _FullViewState extends State<FullView> {
               ],
             ),
             SizedBox(
-              height: 13.h,
+              height: 23.h,
             ),
             Container(
-              height: 110.h,
+              height: 106.h,
               width: 339.w,
               decoration: BoxDecoration(
                 color: Colors.white.withOpacity(0.31),
@@ -124,7 +127,6 @@ class _FullViewState extends State<FullView> {
               colors: AppColors.appBarGradient,
               begin: Alignment.topRight,
               end: Alignment.bottomLeft,
-              stops: [0.5, 1.0],
             ),
           ),
         ),
@@ -137,20 +139,56 @@ class _FullViewState extends State<FullView> {
         iconPath: AppIcons.add,
         onTap: () {
           showModalBottomSheet(
+            backgroundColor: Colors.white,
             shape: const RoundedRectangleBorder(
               borderRadius: BorderRadius.vertical(
-                top: Radius.circular(30),
+                top: Radius.circular(50),
               ),
             ),
             context: context,
-            builder: (context) => Center(
-              child: CricleButton(
-                onTap: () {
-                  Navigator.pop(context);
-                },
-                iconPath: AppIcons.close,
-              ),
-            ),
+            builder: (context) {
+              return Container(
+                height: height / 1.6,
+                child: Stack(
+                  alignment: Alignment.center,
+                  children: [
+                    Positioned(
+                      bottom: 2,
+                      child: Container(
+                        height: 800,
+                        decoration: BoxDecoration(
+                          color: Colors.red,
+                          borderRadius: BorderRadius.vertical(
+                            top: Radius.circular(50),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Positioned(
+                      bottom: 0,
+                      child: Container(
+                        height: 800,
+                        decoration: BoxDecoration(
+                          color: Colors.black,
+                          borderRadius: BorderRadius.vertical(
+                            top: Radius.circular(50),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Positioned(
+                      top: 14,
+                      child: CricleButton(
+                        onTap: () {
+                          Navigator.pop(context);
+                        },
+                        iconPath: AppIcons.close,
+                      ),
+                    )
+                  ],
+                ),
+              );
+            },
           );
         },
       ),
