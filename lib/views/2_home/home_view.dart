@@ -6,6 +6,7 @@ class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -14,10 +15,9 @@ class HomeView extends StatelessWidget {
             padding: EdgeInsets.only(left: 18.0.w, top: 13.h, bottom: 21.h),
             child: Text(
               "Today",
-              style: GoogleFonts.rubik(
+              style: RubikFont.w500.copyWith(
                 fontSize: 13.sp,
-                color: AppColors.C_8B87B3,
-                fontWeight: FontWeight.w500,
+                color: AppColors.c8B87B3,
               ),
             ),
           ),
@@ -44,7 +44,7 @@ class HomeView extends StatelessWidget {
                   width: 4.w,
                   height: 55.h,
                   decoration: BoxDecoration(
-                    color: AppColors.C_F456C3,
+                    color: AppColors.cF456C3,
                     borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(5.r),
                       bottomLeft: Radius.circular(5.r),
@@ -53,7 +53,7 @@ class HomeView extends StatelessWidget {
                 ),
                 InkWell(
                   onTap: () {},
-                  child: SvgPicture.asset(AppIcons.circle),
+                  child: SvgPicture.asset(Assets.circle),
                 ),
                 Padding(
                   padding: EdgeInsets.only(bottom: 18.0.h, right: 40.w),
@@ -61,18 +61,17 @@ class HomeView extends StatelessWidget {
                     children: [
                       Text(
                         "07.00 AM",
-                        style: GoogleFonts.rubik(
-                            color: AppColors.C_686868, fontSize: 11.sp),
+                        style: RubikFont.w400.copyWith(
+                            color: AppColors.c686868, fontSize: 11.sp),
                       ),
                       SizedBox(
                         width: 10.w,
                       ),
                       Text(
                         "Go jogging with Christin",
-                        style: GoogleFonts.rubik(
-                          color: AppColors.C_554E8F,
+                        style: RubikFont.w500.copyWith(
+                          color: AppColors.c554E8F,
                           fontSize: 14.sp,
-                          fontWeight: FontWeight.w500,
                         ),
                       ),
                     ],
@@ -80,7 +79,7 @@ class HomeView extends StatelessWidget {
                 ),
                 InkWell(
                   onTap: () {},
-                  child: SvgPicture.asset(AppIcons.bell),
+                  child: SvgPicture.asset(Assets.bell),
                 ),
                 SizedBox(width: 5.w)
               ],

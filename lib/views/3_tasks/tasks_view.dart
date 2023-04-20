@@ -1,13 +1,14 @@
 import 'package:todo/export_files.dart';
-import 'package:todo/models/grid_model.dart';
+import 'package:todo/models/category_model.dart';
 
 class TasksView extends StatelessWidget {
   const TasksView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    var gridItem = GridModel.gridItems;
+    var category = CategoryModel.categories;
     return Scaffold(
+      backgroundColor: Colors.white,
       body: GridView.builder(
         padding: EdgeInsets.only(
           left: 18.w,
@@ -21,7 +22,7 @@ class TasksView extends StatelessWidget {
             crossAxisSpacing: 19.0,
             mainAxisSpacing: 5.0,
             childAspectRatio: 0.7),
-        itemCount: gridItem.length,
+        itemCount: category.length,
         itemBuilder: (context, index) {
           return Container(
             height: 180.h,
@@ -32,7 +33,7 @@ class TasksView extends StatelessWidget {
               borderRadius: BorderRadius.circular(5.r),
               boxShadow: [
                 BoxShadow(
-                  color: AppColors.C_BBBBBB.withOpacity(0.35),
+                  color: AppColors.cBBBBBB.withOpacity(0.35),
                   blurRadius: 11,
                   spreadRadius: 0,
                   offset: const Offset(0, 7),
@@ -47,27 +48,26 @@ class TasksView extends StatelessWidget {
                       height: 61.h,
                       width: 61.h,
                       decoration: BoxDecoration(
-                        color: gridItem[index].color,
+                        color: category[index].color,
                         shape: BoxShape.circle,
                       ),
                       child: Center(
                         child: SvgPicture.asset(
-                          gridItem[index].iconPath,
+                          category[index].iconPath,
                         ),
                       )),
                   Text(
-                    gridItem[index].title,
-                    style: GoogleFonts.rubik(
-                      color: AppColors.C_686868,
+                    category[index].title,
+                    style: RubikFont.w500.copyWith(
+                      color: AppColors.c686868,
                       fontSize: 17.sp,
-                      fontWeight: FontWeight.w500,
                     ),
                   ),
                   SizedBox(height: 30.h),
                   Text(
-                    "${gridItem[index].taskCount} Tasks",
-                    style: GoogleFonts.rubik(
-                      color: AppColors.C_A1A1A1,
+                    "${category[index].taskCount} Tasks",
+                    style: RubikFont.w400.copyWith(
+                      color: AppColors.cA1A1A1,
                       fontSize: 8.sp,
                     ),
                   )

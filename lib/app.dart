@@ -4,22 +4,22 @@ class ToDoApp extends StatelessWidget {
   const ToDoApp({super.key});
   @override
   Widget build(BuildContext context) {
-    final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
-    LocalNotificationService.localNotificationService.init(navigatorKey);
     return ScreenUtilInit(
       designSize: const Size(360, 800),
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (context, child) {
-        return GetMaterialApp(
+        return MaterialApp(
           title: 'To Do app for Udevs',
           debugShowCheckedModeBanner: false,
           theme: ThemeData(
-            primarySwatch: Colors.blue,
+            useMaterial3: true,
+            primarySwatch: Colors.lightBlue,
+            colorScheme:
+                ColorScheme.fromSwatch(primarySwatch: Colors.lightBlue),
           ),
-          initialRoute: AppRoutes.splash,
-          getPages: AppRoutes.routes,
-          navigatorKey: navigatorKey,
+          initialRoute: RouteNames.splash,
+          onGenerateRoute: AppRoutes().onGenerateRoute,
         );
       },
     );

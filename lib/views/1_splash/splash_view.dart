@@ -6,29 +6,34 @@ class SplashView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: SafeArea(
-        child: Center(
+        child: SizedBox(
+          width: double.infinity,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Image.asset(
-                AppIcons.onboard,
+                Assets.onboard,
                 width: 179.79.w,
                 height: 195.65.h,
               ),
               SizedBox(height: 116.h),
               Text(
                 "Reminders made simple",
-                style: TextStyle(
-                  color: AppColors.C_554E8F,
-                  fontWeight: FontWeight.w500,
+                style: RubikFont.w500.copyWith(
+                  color: AppColors.c554E8F,
                   fontSize: 22.sp,
                 ),
               ),
               SizedBox(height: 171.h),
-              GetStartedButton(
+              GreenButton(
                 onTap: () {
-                  Get.offAndToNamed(AppRoutes.fullView);
+                  Navigator.pushNamedAndRemoveUntil(
+                    context,
+                    RouteNames.fullView,
+                    (r) => false,
+                  );
                 },
               ),
             ],
@@ -38,5 +43,3 @@ class SplashView extends StatelessWidget {
     );
   }
 }
-
-

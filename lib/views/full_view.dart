@@ -1,5 +1,6 @@
-import 'package:flutter/cupertino.dart';
 import 'package:todo/export_files.dart';
+import 'package:todo/views/4_addtask/add_task_view.dart';
+import 'package:zoom_tap_animation/zoom_tap_animation.dart';
 
 class FullView extends StatefulWidget {
   const FullView({super.key});
@@ -9,186 +10,26 @@ class FullView extends StatefulWidget {
 }
 
 class _FullViewState extends State<FullView> {
-  bool isSelected = false;
   int currentIndex = 0;
-  int currentId = 1;
 
   List<Widget> screens = [const HomeView(), const TasksView()];
   @override
   Widget build(BuildContext context) {
-    double height = MediaQuery.of(context).size.height;
-    double width = MediaQuery.of(context).size.width;
-
     return Scaffold(
-      appBar: AppBar(
-        toolbarHeight: 190.h,
-        elevation: 0,
-        title: Column(
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  "Hello Brenda!\nToday you have 9 tasks",
-                  style:
-                      GoogleFonts.rubik(fontSize: 18.sp, color: Colors.white),
-                ),
-                CircleAvatar(
-                  backgroundColor: Colors.white,
-                  radius: 20.r,
-                  child: Icon(
-                    CupertinoIcons.person_fill,
-                    size: 20.sp,
-                  ),
-                ),
-              ],
-            ),
-            SizedBox(
-              height: 23.h,
-            ),
-            Container(
-              height: 106.h,
-              width: 339.w,
-              decoration: BoxDecoration(
-                color: Colors.white.withOpacity(0.31),
-                borderRadius: BorderRadius.circular(5.r),
-              ),
-              child: Padding(
-                padding: EdgeInsets.only(left: 16.0.w, top: 9.h, right: 11.w),
-                child: Column(
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          "Today Reminder",
-                          style: GoogleFonts.rubik(
-                            color: Colors.white,
-                            fontSize: 20.sp,
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
-                        InkWell(
-                          onTap: () {},
-                          child: const Icon(
-                            CupertinoIcons.clear,
-                          ),
-                        ),
-                      ],
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              "Meeting with client",
-                              style: GoogleFonts.rubik(
-                                color: AppColors.C_F3F3F3,
-                                fontSize: 11.sp,
-                                fontWeight: FontWeight.w400,
-                              ),
-                            ),
-                            SizedBox(
-                              height: 10.h,
-                            ),
-                            Text(
-                              "13.00 PM",
-                              style: GoogleFonts.rubik(
-                                color: AppColors.C_F3F3F3,
-                                fontSize: 11.sp,
-                                fontWeight: FontWeight.w400,
-                              ),
-                            ),
-                          ],
-                        ),
-                        Padding(
-                          padding: EdgeInsets.only(
-                            right: 40.0.w,
-                          ),
-                          child: SvgPicture.asset(
-                            AppIcons.bigbell,
-                            height: 60.h,
-                            width: 52.w,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ],
-        ),
-        flexibleSpace: Container(
-          decoration: const BoxDecoration(
-            gradient: LinearGradient(
-              colors: AppColors.appBarGradient,
-              begin: Alignment.topRight,
-              end: Alignment.bottomLeft,
-            ),
-          ),
-        ),
-      ),
+      appBar: const CustomAppBar(),
       resizeToAvoidBottomInset: false,
       body: screens[currentIndex],
       bottomNavigationBar: buildBottomBar(),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: CricleButton(
-        iconPath: AppIcons.add,
+        iconPath: Assets.add,
         onTap: () {
           showModalBottomSheet(
-            backgroundColor: Colors.white,
-            shape: const RoundedRectangleBorder(
-              borderRadius: BorderRadius.vertical(
-                top: Radius.circular(50),
-              ),
-            ),
+            elevation: 0.0,
+            backgroundColor: AppColors.transparent,
+            isScrollControlled: true,
             context: context,
-            builder: (context) {
-              return Container(
-                height: height / 1.6,
-                child: Stack(
-                  alignment: Alignment.center,
-                  children: [
-                    Positioned(
-                      bottom: 2,
-                      child: Container(
-                        height: 800,
-                        decoration: BoxDecoration(
-                          color: Colors.red,
-                          borderRadius: BorderRadius.vertical(
-                            top: Radius.circular(50),
-                          ),
-                        ),
-                      ),
-                    ),
-                    Positioned(
-                      bottom: 0,
-                      child: Container(
-                        height: 800,
-                        decoration: BoxDecoration(
-                          color: Colors.black,
-                          borderRadius: BorderRadius.vertical(
-                            top: Radius.circular(50),
-                          ),
-                        ),
-                      ),
-                    ),
-                    Positioned(
-                      top: 14,
-                      child: CricleButton(
-                        onTap: () {
-                          Navigator.pop(context);
-                        },
-                        iconPath: AppIcons.close,
-                      ),
-                    )
-                  ],
-                ),
-              );
-            },
+            builder: (context) => const AddTaskView(),
           );
         },
       ),
@@ -218,7 +59,7 @@ class _FullViewState extends State<FullView> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                InkWell(
+                ZoomTapAnimation(
                   onTap: () {
                     setState(() {
                       currentIndex = 0;
@@ -236,29 +77,29 @@ class _FullViewState extends State<FullView> {
                           width: 24.w,
                           child: currentIndex == 0
                               ? SvgPicture.asset(
-                                  AppIcons.home,
+                                  Assets.home,
                                 )
                               : SvgPicture.asset(
-                                  AppIcons.home2,
+                                  Assets.home2,
                                 ),
                         ),
                         SizedBox(
                           height: 3.h,
                         ),
-                        SizedText(
-                          text: 'Home',
-                          textStyle: TextStyle(
-                            fontWeight: FontWeight.w500,
+                        Text(
+                          'Home',
+                          style: RubikFont.w500.copyWith(
+                            fontSize: 10.sp,
                             color: currentIndex == 0
-                                ? AppColors.C_5F87E7
-                                : AppColors.C_DADADA,
+                                ? AppColors.primaryColor
+                                : AppColors.cDADADA,
                           ),
                         ),
                       ],
                     ),
                   ),
                 ),
-                InkWell(
+                ZoomTapAnimation(
                   onTap: () {
                     setState(() {
                       currentIndex = 1;
@@ -276,22 +117,22 @@ class _FullViewState extends State<FullView> {
                           width: 24.w,
                           child: currentIndex == 1
                               ? SvgPicture.asset(
-                                  AppIcons.tasks,
+                                  Assets.tasks,
                                 )
                               : SvgPicture.asset(
-                                  AppIcons.tasks2,
+                                  Assets.tasks2,
                                 ),
                         ),
                         SizedBox(
                           height: 3.h,
                         ),
-                        SizedText(
-                          text: 'Tasks',
-                          textStyle: TextStyle(
-                            fontWeight: FontWeight.w500,
+                        Text(
+                          'Tasks',
+                          style: RubikFont.w500.copyWith(
+                            fontSize: 10.sp,
                             color: currentIndex == 1
-                                ? AppColors.C_5F87E7
-                                : AppColors.C_DADADA,
+                                ? AppColors.primaryColor
+                                : AppColors.cDADADA,
                           ),
                         ),
                       ],
@@ -308,7 +149,7 @@ class _FullViewState extends State<FullView> {
             height: 4.h,
             width: 132.w,
             decoration: BoxDecoration(
-              color: AppColors.C_E0E0E0,
+              color: AppColors.cE0E0E0,
               borderRadius: BorderRadius.circular(4.r),
             ),
           ),

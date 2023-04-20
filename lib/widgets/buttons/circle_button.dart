@@ -1,4 +1,6 @@
+
 import 'package:todo/export_files.dart';
+import 'package:zoom_tap_animation/zoom_tap_animation.dart';
 
 class CricleButton extends StatelessWidget {
   const CricleButton({
@@ -11,15 +13,15 @@ class CricleButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return FloatingActionButton(
-      onPressed: onTap,
+    return ZoomTapAnimation(
+      onTap: onTap,
       child: Container(
         height: 53.h,
         width: 53.h,
         decoration: BoxDecoration(
           boxShadow: [
             BoxShadow(
-              color: AppColors.C_F456C3.withOpacity(0.47),
+              color: AppColors.cF456C3.withOpacity(0.47),
               spreadRadius: 0,
               blurRadius: 9,
               offset: const Offset(0, 7), // changes position of shadow

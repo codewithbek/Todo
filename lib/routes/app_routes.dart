@@ -1,26 +1,24 @@
+import 'package:flutter/cupertino.dart';
 import 'package:todo/export_files.dart';
 
 class AppRoutes {
-  static String splash = "/";
-  static String fullView = "/fullView";
+  Route? onGenerateRoute(RouteSettings settings) {
+    switch (settings.name) {
+      case RouteNames.splash:
+        return customPageRoute(const SplashView());
+      case RouteNames.fullView:
+        return customPageRoute(const FullView());
+      case RouteNames.home:
+        return customPageRoute(const HomeView());
 
-  static String home = "/home";
-  static String tasks = "/tasks";
-  static String getSplashRoute() => splash;
-  static String getHomeRoute() => home;
-  static String getBottomeBar() => fullView;
-  static List<GetPage> routes = [
-    GetPage(
-      name: splash,
-      page: () => SplashView(),
-    ),
-    GetPage(
-      name: fullView,
-      page: () => FullView(),
-    ),
-    GetPage(
-      name: home,
-      page: () => HomeView(),
-    ),
-  ];
+      default:
+        return null;
+    }
+  }
+
+  customPageRoute(Widget child) {
+    return CupertinoPageRoute(
+      builder: (context) => child,
+    );
+  }
 }
