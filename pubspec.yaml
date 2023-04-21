@@ -17,7 +17,7 @@ dependencies:
   
   # UI
   flutter_svg: ^2.0.4
-  flutter_screenutil: ^5.7.0
+  flutter_screenutil: ^5.7.0 #responsive
   flutter_slidable: ^2.0.0 
   zoom_tap_animation: ^1.1.0
   fluttertoast: ^8.2.1
@@ -26,7 +26,13 @@ dependencies:
   flutter_bloc: ^8.1.2
   equatable: ^2.0.5
 
+  # Storage
   get_storage: ^2.1.1
+  hive: ^2.2.3
+  hive_flutter: ^1.1.0
+  path_provider: ^2.0.11
+  hive_generator: ^2.0.0
+
 
   # Other
   flutter_local_notifications: ^13.0.0
@@ -39,6 +45,9 @@ dev_dependencies:
 
   
   flutter_lints: ^2.0.0
+  build_runner: ^2.3.2
+
+
 
 flutter:
 

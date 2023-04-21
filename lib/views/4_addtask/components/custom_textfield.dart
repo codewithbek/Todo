@@ -22,7 +22,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 21.5.w),
-      child: TextField(
+      child: TextFormField(
         controller: widget.controller,
         cursorColor: AppColors.c373737,
         cursorWidth: 2.w,
