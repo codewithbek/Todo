@@ -14,4 +14,28 @@ class TodoModel extends HiveObject {
   late DateTime dateTime;
   @HiveField(4)
   late bool isDone;
+
+  TodoModel({
+    required this.categoryId,
+    required this.title,
+    required this.dateTime,
+    this.isDone = false,
+    this.id = 0,
+  });
+
+  factory TodoModel.fromJson(Map<String, dynamic> json) {
+    return TodoModel(
+      id: json['id'],
+      categoryId: json['categoryId'],
+      title: json['title'],
+      dateTime: json['dateTime'],
+    );
+  }
+
+  Map<String, dynamic> toJson() => {
+        "id": id,
+        "categoryId": categoryId,
+        "title": title,
+        "dateTime": dateTime,
+      };
 }

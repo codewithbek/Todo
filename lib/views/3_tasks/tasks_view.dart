@@ -1,79 +1,72 @@
 import 'package:todo/export_files.dart';
+import 'package:todo/views/3_tasks/components/category_grid_item.dart';
+import 'package:todo/views/widgets/reminder_delegate.dart';
 
 class TasksView extends StatelessWidget {
   const TasksView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    var category = CategoryModel.categories;
+    List<CategoryModel> categories =
+        context.read<CategoryRepository>().categories;
     return Scaffold(
-      backgroundColor: Colors.white,
-      body: GridView.builder(
-        padding: EdgeInsets.only(
-          left: 18.w,
-          top: 21.h,
-          right: 18.w,
-        ),
-        physics: const BouncingScrollPhysics(),
-        shrinkWrap: true,
-        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2,
-            crossAxisSpacing: 19.0,
-            mainAxisSpacing: 5.0,
-            childAspectRatio: 0.7),
-        itemCount: category.length,
-        itemBuilder: (context, index) {
-          return Container(
-            height: 180.h,
-            width: 159.w,
-            margin: EdgeInsets.only(bottom: 19.h),
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(5.r),
-              boxShadow: [
-                BoxShadow(
-                  color: AppColors.cBBBBBB.withOpacity(0.35),
-                  blurRadius: 11,
-                  spreadRadius: 0,
-                  offset: const Offset(0, 7),
-                ),
-              ],
-            ),
-            child: Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Container(
-                      height: 61.h,
-                      width: 61.h,
-                      decoration: BoxDecoration(
-                        color: category[index].color,
-                        shape: BoxShape.circle,
-                      ),
-                      child: Center(
-                        child: SvgPicture.asset(
-                          category[index].iconPath,
-                        ),
-                      )),
-                  Text(
-                    category[index].title,
-                    style: RubikFont.w500.copyWith(
-                      color: AppColors.c686868,
-                      fontSize: 17.sp,
+      backgroundColor: AppColors.cF9FCFF,
+      body: BlocBuilder<TodoBloc, TodoState>(
+        builder: (context, state) {
+          if (state.todoStatus.isSuccess) {
+            return CustomScrollView(
+              slivers: [
+                if (state.showReminder &&
+                    state.todos
+                        .where((element) => !element.isDone)
+                        .toList()
+                        .isNotEmpty)
+                  SliverPersistentHeader(
+                    delegate: ReminderDelegate(
+                      state.todos
+                          .where((element) => !element.isDone)
+                          .toList()[0],
                     ),
                   ),
-                  SizedBox(height: 30.h),
-                  Text(
-                    "${category[index].taskCount} Tasks",
-                    style: RubikFont.w400.copyWith(
-                      color: AppColors.cA1A1A1,
-                      fontSize: 8.sp,
+                SliverPadding(
+                  padding: EdgeInsets.only(left: 18.w, top: 13.h),
+                  sliver: SliverToBoxAdapter(
+                    child: Text(
+                      'Projects',
+                      style: RubikFont.w500.copyWith(
+                        fontSize: 13.sp,
+                        color: AppColors.c8B87B3,
+                      ),
                     ),
-                  )
-                ],
-              ),
-            ),
-          );
+                  ),
+                ),
+                SliverPadding(
+                  padding:
+                      EdgeInsets.symmetric(horizontal: 18.w, vertical: 31.h),
+                  sliver: SliverGrid.builder(
+                    itemCount: categories.length,
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      childAspectRatio: 0.85,
+                      mainAxisSpacing: 12,
+                      crossAxisSpacing: 12,
+                    ),
+                    itemBuilder: (context, index) {
+                      return CategoryGridItem(
+                        categoryModel: categories[index],
+                      );
+                    },
+                  ),
+                ),
+              ],
+            );
+          } else if (state.todoStatus.isLoading) {
+            return const Center(
+              child: CircularProgressIndicator.adaptive(),
+            );
+          }
+          return const SizedBox();
         },
       ),
     );

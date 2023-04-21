@@ -16,12 +16,13 @@ class TodoModelAdapter extends TypeAdapter<TodoModel> {
     final fields = <int, dynamic>{
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
-    return TodoModel()
-      ..id = fields[0] as int
-      ..categoryId = fields[1] as int
-      ..title = fields[2] as String
-      ..dateTime = fields[3] as DateTime
-      ..isDone = fields[4] as bool;
+    return TodoModel(
+      id: fields[0] as int,
+      categoryId: fields[1] as int,
+      title: fields[2] as String,
+      dateTime: fields[3] as DateTime,
+      isDone: fields[4] as bool,
+    );
   }
 
   @override

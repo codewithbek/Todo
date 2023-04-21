@@ -3,9 +3,10 @@ import 'package:todo/export_files.dart';
 class AddTaskButton extends StatelessWidget {
   const AddTaskButton({
     super.key,
-    required this.onTap,
+    required this.onTap, required this.title,
   });
   final VoidCallback onTap;
+  final String title;
 
   @override
   Widget build(BuildContext context) {
@@ -38,10 +39,9 @@ class AddTaskButton extends StatelessWidget {
         onPressed: onTap,
         child: Center(
           child: Text(
-            "Add task",
-            style: RubikFont.w400.copyWith(
-                fontSize: 15.sp,
-                color: AppColors.cFCFCFC),
+            title,
+            style: RubikFont.w400
+                .copyWith(fontSize: 15.sp, color: AppColors.cFCFCFC),
           ),
         ),
       ),

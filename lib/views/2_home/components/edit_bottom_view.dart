@@ -1,22 +1,27 @@
 import 'package:intl/intl.dart';
 import 'package:todo/export_files.dart';
 
-class AddTaskView extends StatefulWidget {
-  const AddTaskView({super.key});
+class EditBottomView extends StatefulWidget {
+  const EditBottomView({super.key, required this.todoModel});
+
+  final TodoModel todoModel;
 
   @override
-  State<AddTaskView> createState() => _AddTaskViewState();
+  State<EditBottomView> createState() => _EditBottomViewState();
 }
 
-class _AddTaskViewState extends State<AddTaskView> {
+class _EditBottomViewState extends State<EditBottomView> {
   late final TextEditingController controller;
   List<CategoryModel> categories = [];
-  int selectedCategoryId = -1;
-  DateTime? pickedDate;
+  late DateTime pickedDate;
+  late int selectedCategoryId;
 
   @override
   void initState() {
     controller = TextEditingController();
+    controller.text = widget.todoModel.title;
+    selectedCategoryId = widget.todoModel.categoryId;
+    pickedDate = widget.todoModel.dateTime;
     categories = context.read<CategoryRepository>().categories;
     super.initState();
   }
@@ -41,7 +46,7 @@ class _AddTaskViewState extends State<AddTaskView> {
                   SizedBox(height: 43.h),
                   Center(
                     child: Text(
-                      "Add new task",
+                      "Edit task",
                       style: RubikFont.w500.copyWith(
                         fontSize: 13.sp,
                         color: AppColors.c404040,
@@ -49,13 +54,6 @@ class _AddTaskViewState extends State<AddTaskView> {
                     ),
                   ),
                   CustomTextField(controller: controller),
-                  SizedBox(height: 17.5.h),
-                  Container(
-                    margin: EdgeInsets.symmetric(horizontal: 21.w),
-                    decoration: BoxDecoration(
-                        border: Border.all(
-                            color: AppColors.black.withOpacity(0.1))),
-                  ),
                   SizedBox(height: 17.5.h),
                   SizedBox(
                     height: 30.h,
@@ -68,25 +66,20 @@ class _AddTaskViewState extends State<AddTaskView> {
                           category: categories[index],
                           isSelected:
                               categories[index].id == selectedCategoryId,
-                          onPressed: () => setState(() {
-                            selectedCategoryId = categories[index].id;
-                          }),
+                          onPressed: () => setState(
+                            () {
+                              selectedCategoryId = categories[index].id;
+                            },
+                          ),
                         ),
                       ),
                     ),
                   ),
                   SizedBox(height: 13.5.h),
-                  Container(
-                    margin: EdgeInsets.symmetric(horizontal: 21.w),
-                    decoration: BoxDecoration(
-                        border: Border.all(
-                            color: AppColors.black.withOpacity(0.1))),
-                  ),
-                  SizedBox(height: 13.5.h),
                   Padding(
                     padding: EdgeInsets.symmetric(horizontal: 21.5.w),
                     child: Divider(
-                      color: AppColors.cFCFCFC,
+                      color: AppColors.cCFCFCF,
                       height: 1.h,
                     ),
                   ),
@@ -101,11 +94,7 @@ class _AddTaskViewState extends State<AddTaskView> {
                                 await DateTimeUtils.getDateTime(
                               context: context,
                             );
-                            if (dateTime == null) {
-                              MessageUtils.getMyToast(
-                                message: 'Please choose date and time',
-                              );
-                            } else {
+                            if (dateTime != null) {
                               setState(() {
                                 pickedDate = dateTime;
                               });
@@ -114,9 +103,7 @@ class _AddTaskViewState extends State<AddTaskView> {
                         ),
                         SizedBox(width: 15.w),
                         Text(
-                          pickedDate == null
-                              ? 'Not Choosed'
-                              : "${DateFormat.MMMMd().format(pickedDate!)} ${DateFormat.Hm().format(pickedDate!)} ",
+                          "${DateFormat.MMMMd().format(pickedDate)} ${DateFormat.Hm().format(pickedDate)} ",
                           style: RubikFont.w500.copyWith(
                             fontSize: 13.sp,
                             color: AppColors.c404040,
@@ -128,19 +115,39 @@ class _AddTaskViewState extends State<AddTaskView> {
                   const Spacer(),
                   AddTaskButton(
                     onTap: () {
-                      context.read<TodoBloc>().add(
-                            AddTodoEvent(
-                              selectedCategoryId: selectedCategoryId,
-                              title: controller.text,
-                              dateTime: pickedDate,
-                              context: context,
-                              categoryName: context
-                                  .read<CategoryRepository>()
-                                  .getNameById(selectedCategoryId),
-                            ),
-                          );
+                      // if (controller.text == '') {
+                      //   MessageUtils.getMyToast(
+                      //       message: 'Please fill the field');
+                      // } else if (pickedDate
+                      //         .difference(DateTime.now())
+                      //         .inMinutes <=
+                      //     0) {
+                      //   MessageUtils.getMyToast(
+                      //       message: 'Task time must be in the future');
+                      // } else {
+                      //   var todo = widget.todoModel.copyWith(
+                      //     categoryId: selectedCategoryId,
+                      //     dateTime: pickedDate,
+                      //     title: controller.text,
+                      //   );
+                      //   context.read<TodoBloc>().add(
+                      //         UpdateTodoEvent(
+                      //           todoModel: todo,
+                      //         ),
+                      //       );
+                      //   LocalNotificationService.localNotificationService
+                      //       .cancelNotificationById(todo.id!);
+                      //   LocalNotificationService.localNotificationService
+                      //       .scheduleNotification(
+                      //     cachedTodo: todo,
+                      //     categoryName: context
+                      //         .read<CategoryRepository>()
+                      //         .getNameById(selectedCategoryId),
+                      //   );
+                      //   Navigator.of(context).pop();
+                      // }
                     },
-                    title: "Add Task",
+                    title: 'Save task',
                   ),
                   SizedBox(height: 16.h),
                 ],

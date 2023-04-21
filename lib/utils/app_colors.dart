@@ -19,16 +19,22 @@ class AppColors {
   static const cDADADA = Color(0xFFDADADA);
   static const c8B87B3 = Color(0xFF8B87B3);
   static const c686868 = Color(0xFF686868);
+  static const cCFCFCF = Color(0xFFCFCFCF);
   static const c66C81C = Color(0xFF66C81C);
+  static const c91DC5A = Color(0xFF91DC5A);
   static const cFCFCFC = Color(0xFFFCFCFC);
   static const cE0E0E0 = Color(0xFFE0E0E0);
   static const cF456C3 = Color(0xFFF456C3);
   static const c6894EE = Color(0xFF6894EE);
   static const cF3F3F3 = Color(0xFFF3F3F3);
   static const cBBBBBB = Color(0xFFBBBBBB);
+  static const cF9FCFF = Color(0xFFF9FCFF);
   static const c404040 = Color(0xFF404040);
   static const c8E8E8E = Color(0xFF8E8E8E);
+  static const cC4CEF5 = Color(0xFFC4CEF5);
+  static const cB5B5B5 = Color(0xFFB5B5B5);
   static const cA1A1A1 = Color(0xFFA1A1A1);
+  static const cFFCFCF = Color(0xFFFFCFCF);
 
   // Gradients
   static const greenGradient = [

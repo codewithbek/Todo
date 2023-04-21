@@ -1,4 +1,3 @@
-import 'package:todo/data/models/todo_model.dart';
 import 'package:todo/export_files.dart';
 
 class HiveService {
@@ -13,11 +12,19 @@ class HiveService {
     return box.values.toList().cast<TodoModel>();
   }
 
-  Future<void> addTasks(Box box, TodoModel todoModel) async {
-    await box.add(todoModel);
+  Future<void> addTasks(Box box, TodoModel todo) async {
+    await box.add(todo);
   }
 
-  Future<void> deleteTasks(Box box) async {
+  Future<void> deleteTaskById(Box box, int id) async {
+    await box.delete(id);
+  }
+
+  // Future<void> updateTask(Box box, TodoModel todo ) async {
+  //   await box.put(todo);
+  // }
+
+  Future<void> deleteAllTasks(Box box) async {
     await box.clear();
   }
 }

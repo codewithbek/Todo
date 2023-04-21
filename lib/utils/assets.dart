@@ -22,4 +22,5 @@ class Assets {
   static const String close = "assets/icons/close.svg";
   static const String circle = "assets/icons/circle.svg";
   static const String checked = "assets/icons/checked.svg";
+  static const xNoteIcon = 'assets/icons/xnote.svg';
 }

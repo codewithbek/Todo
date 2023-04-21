@@ -75,7 +75,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSize {
   }
 
   @override
-  Size get preferredSize => Size(double.infinity, 69.h);
+  Size get preferredSize => Size(double.infinity, 60.h);
 
   @override
   Widget get child => throw UnimplementedError();
