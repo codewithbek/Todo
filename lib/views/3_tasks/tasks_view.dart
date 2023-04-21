@@ -1,5 +1,4 @@
 import 'package:todo/export_files.dart';
-import 'package:todo/models/category_model.dart';
 
 class TasksView extends StatelessWidget {
   const TasksView({super.key});

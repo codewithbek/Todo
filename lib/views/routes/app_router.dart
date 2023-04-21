@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:todo/export_files.dart';
 
-class AppRoutes {
+class AppRouter {
   Route? onGenerateRoute(RouteSettings settings) {
     switch (settings.name) {
       case RouteNames.splash:

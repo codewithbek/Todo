@@ -19,7 +19,7 @@ class ToDoApp extends StatelessWidget {
                 ColorScheme.fromSwatch(primarySwatch: Colors.lightBlue),
           ),
           initialRoute: RouteNames.splash,
-          onGenerateRoute: AppRoutes().onGenerateRoute,
+          onGenerateRoute: AppRouter().onGenerateRoute,
         );
       },
     );
