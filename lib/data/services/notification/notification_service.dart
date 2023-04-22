@@ -20,17 +20,14 @@ class LocalNotificationService {
   void init() {
     tz.initializeTimeZones();
 
-    // Android
     const AndroidInitializationSettings androidInitializationSettings =
         AndroidInitializationSettings('@mipmap/ic_launcher');
 
-    //IOS
     final DarwinInitializationSettings initializationSettingsDarwin =
         DarwinInitializationSettings(
       onDidReceiveLocalNotification: onDidReceiveLocalNotification,
     );
 
-    //Set
     InitializationSettings initializationSettings = InitializationSettings(
       android: androidInitializationSettings,
       iOS: initializationSettingsDarwin,
@@ -47,14 +44,10 @@ class LocalNotificationService {
         ?.requestPermission();
   }
 
-// Android
-  /// This func works when notification has sent when device was on foreground and when will
-  /// tapped on this notification this method will work
   void onDidReceiveNotificationResponse(
     NotificationResponse notificationResponse,
   ) async {}
 
-  //IOS
   void onDidReceiveLocalNotification(
     int id,
     String? title,
@@ -62,7 +55,6 @@ class LocalNotificationService {
     String? payload,
   ) async {}
 
-  //Android channel
   AndroidNotificationChannel androidNotificationChannel =
       const AndroidNotificationChannel(
     "Todo_channel",

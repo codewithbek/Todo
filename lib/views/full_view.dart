@@ -1,5 +1,4 @@
 import 'package:todo/export_files.dart';
-import 'package:todo/views/4_addtask/add_task_view.dart';
 import 'package:zoom_tap_animation/zoom_tap_animation.dart';
 
 class FullView extends StatefulWidget {

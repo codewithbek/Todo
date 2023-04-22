@@ -1,6 +1,5 @@
 import 'package:todo/export_files.dart';
-import 'package:todo/views/2_home/components/todo_item.dart';
-import 'package:todo/views/widgets/reminder_delegate.dart';
+
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});

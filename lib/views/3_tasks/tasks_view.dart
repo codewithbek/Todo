@@ -1,6 +1,4 @@
 import 'package:todo/export_files.dart';
-import 'package:todo/views/3_tasks/components/category_grid_item.dart';
-import 'package:todo/views/widgets/reminder_delegate.dart';
 
 class TasksView extends StatelessWidget {
   const TasksView({super.key});

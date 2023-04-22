@@ -41,3 +41,7 @@ export 'package:todo/data/repositories/category_repository.dart';
 export 'package:todo/views/2_home/components/custom_checkbox.dart';
 export 'package:todo/views/2_home/components/custom_slide_item.dart';
 export 'package:todo/views/2_home/components/edit_task_view.dart';
+export 'package:todo/views/2_home/components/todo_item.dart';
+export 'package:todo/views/widgets/reminder_delegate.dart';
+export 'package:todo/views/3_tasks/components/category_grid_item.dart';
+export 'package:todo/views/4_addtask/add_task_view.dart';
