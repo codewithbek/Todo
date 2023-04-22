@@ -16,7 +16,9 @@ class _FullViewState extends State<FullView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const CustomAppBar(),
+      appBar: CustomAppBar(
+        numberOfTasks: 0,
+      ),
       resizeToAvoidBottomInset: false,
       body: screens[currentIndex],
       bottomNavigationBar: buildBottomBar(),

@@ -77,6 +77,11 @@ class ReminderDelegate extends SliverPersistentHeaderDelegate {
                     ],
                   ),
                 ),
+                Positioned(
+                  right: 30.w,
+                  top: 27.h,
+                  child: SvgPicture.asset(Assets.bigbell),
+                )
               ],
             ),
           ),

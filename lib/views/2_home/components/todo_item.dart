@@ -44,7 +44,7 @@ class TodoItem extends StatelessWidget {
                     backgroundColor: AppColors.transparent,
                     isScrollControlled: true,
                     context: context,
-                    builder: (context) => EditBottomView(todoModel: cachedTodo),
+                    builder: (context) => EditTaskView(todoModel: cachedTodo),
                   );
                 },
               ),

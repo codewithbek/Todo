@@ -137,6 +137,7 @@ class _AddTaskViewState extends State<AddTaskView> {
                               categoryName: context
                                   .read<CategoryRepository>()
                                   .getNameById(selectedCategoryId),
+                              key: selectedCategoryId,
                             ),
                           );
                     },

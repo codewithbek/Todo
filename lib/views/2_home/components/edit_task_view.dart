@@ -1,16 +1,16 @@
 import 'package:intl/intl.dart';
 import 'package:todo/export_files.dart';
 
-class EditBottomView extends StatefulWidget {
-  const EditBottomView({super.key, required this.todoModel});
+class EditTaskView extends StatefulWidget {
+  const EditTaskView({super.key, required this.todoModel});
 
   final TodoModel todoModel;
 
   @override
-  State<EditBottomView> createState() => _EditBottomViewState();
+  State<EditTaskView> createState() => _EditTaskViewState();
 }
 
-class _EditBottomViewState extends State<EditBottomView> {
+class _EditTaskViewState extends State<EditTaskView> {
   late final TextEditingController controller;
   List<CategoryModel> categories = [];
   late DateTime pickedDate;

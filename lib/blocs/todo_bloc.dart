@@ -36,6 +36,7 @@ class TodoBloc extends Bloc<TodoEvent, TodoState> {
     } else {
       Navigator.of(event.context).pop();
       await todoRepository.addTasks(
+        event.key,
         TodoModel(
           categoryId: event.selectedCategoryId,
           title: event.title,

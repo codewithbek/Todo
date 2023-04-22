@@ -36,18 +36,21 @@ class AddTodoEvent extends TodoEvent {
   const AddTodoEvent({
     required this.selectedCategoryId,
     required this.title,
+    required this.key,
     this.dateTime,
     required this.context,
     required this.categoryName,
   });
   final String title;
   final int selectedCategoryId;
+  final int key;
   final DateTime? dateTime;
   final BuildContext context;
   final String categoryName;
 
   @override
   List<Object?> get props => [
+        key,
         title,
         selectedCategoryId,
         dateTime,

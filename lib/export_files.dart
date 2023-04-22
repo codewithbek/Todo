@@ -41,4 +41,4 @@ export 'package:todo/blocs/todo_bloc.dart';
 export 'package:todo/data/repositories/category_repository.dart';
 export 'package:todo/views/2_home/components/custom_checkbox.dart';
 export 'package:todo/views/2_home/components/custom_slide_item.dart';
-export 'package:todo/views/2_home/components/edit_bottom_view.dart';
+export 'package:todo/views/2_home/components/edit_task_view.dart';

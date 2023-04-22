@@ -4,7 +4,9 @@ import 'package:todo/export_files.dart';
 class CustomAppBar extends StatelessWidget implements PreferredSize {
   const CustomAppBar({
     Key? key,
+    required this.numberOfTasks,
   }) : super(key: key);
+  final int numberOfTasks;
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +51,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSize {
                         ),
                       ),
                       Text(
-                        "Today you have  tasks",
+                        "Today you have $numberOfTasks tasks",
                         style: RubikFont.w400.copyWith(
                           fontSize: 18.sp,
                           color: AppColors.white,

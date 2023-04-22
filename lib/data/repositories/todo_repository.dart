@@ -5,9 +5,9 @@ class TodoRepository {
       : _hiveService = hiveService;
   final HiveService _hiveService;
 
-  Future<void> addTasks(TodoModel todoModel) async {
+  Future<void> addTasks(int key,TodoModel todoModel) async {
     var box = await _hiveService.openbox();
-    await _hiveService.addTasks(box, todoModel);
+    await _hiveService.addTasks(box,key, todoModel);
   }
 
   Future<void> deleteTaskById(int id) async {
