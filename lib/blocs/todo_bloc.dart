@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:todo/export_files.dart';
 
 part 'todo_event.dart';
@@ -35,19 +37,23 @@ class TodoBloc extends Bloc<TodoEvent, TodoState> {
       MessageUtils.getMyToast(message: 'Task time must be in the future');
     } else {
       Navigator.of(event.context).pop();
-      await todoRepository.addTasks(
+      await todoRepository
+          .addTasks(
         TodoModel(
-          id: event.selectedCategoryId,
+          id: Random().nextInt(30000),
           categoryId: event.selectedCategoryId,
           title: event.title,
           dateTime: event.dateTime!,
           isDone: false,
         ),
-      );
-      // LocalNotificationService.localNotificationService.scheduleNotification(
-      //   todoModel: todoModel,
-      //   categoryName: event.categoryName,
-      // );
+      )
+          .then((value) {
+        LocalNotificationService.localNotificationService.scheduleNotification(
+          todoModel: value,
+          categoryName: event.categoryName,
+        );
+      });
+
       add(GetTodosEvent());
     }
   }
@@ -77,17 +83,14 @@ class TodoBloc extends Bloc<TodoEvent, TodoState> {
   void updateTodo(
     UpdateTodoEvent event,
     Emitter<TodoState> emit,
-  ) {
+  ) async {
     var todos = state.todos;
-    for (int i = 0; i < todos.length; i++) {
-      if (todos[i].id == event.todoModel.id) {
-        todos.removeAt(i);
-        todos.insert(i, event.todoModel);
-        break;
-      }
+    int index = todos.indexWhere((todo) => todo.id == event.todoModel.id);
+    if (index != -1) {
+      todos[index] = event.todoModel;
+      emit(state.copyWith(todos: todos));
+      await todoRepository.updateToDo(event.todoModel);
     }
-    emit(state.copyWith(todos: todos));
-    todoRepository.updateToDo(event.todoModel);
   }
 
   int getTaskCountByCatgory(int categoryId) {

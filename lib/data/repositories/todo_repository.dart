@@ -5,9 +5,10 @@ class TodoRepository {
       : _hiveService = hiveService;
   final HiveService _hiveService;
 
-  Future<void> addTasks(TodoModel todoModel) async {
+  Future<TodoModel> addTasks(TodoModel todoModel) async {
     var box = await _hiveService.openbox();
     await _hiveService.addTasks(box, todoModel);
+    return _hiveService.getTaskById(box, todoModel.id);
   }
 
   Future<void> deleteTaskById(int id) async {
@@ -15,13 +16,19 @@ class TodoRepository {
     await _hiveService.deleteTaskById(box, id);
   }
 
+  Future<TodoModel> getTaskById(int id) async {
+    var box = await _hiveService.openbox();
+    return _hiveService.getTaskById(box, id);
+  }
+
   Future<List<TodoModel>> getTasks() async {
     var box = await _hiveService.openbox();
+    var a = box.get("todos");
     return _hiveService.getTasks(box);
   }
 
   Future<void> updateToDo(TodoModel todo) async {
     var box = await _hiveService.openbox();
-    _hiveService.updateTask(box, todo);
+    await _hiveService.updateTask(box, todo);
   }
 }

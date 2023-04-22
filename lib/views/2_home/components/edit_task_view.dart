@@ -125,25 +125,27 @@ class _EditTaskViewState extends State<EditTaskView> {
                         MessageUtils.getMyToast(
                             message: 'Task time must be in the future');
                       } else {
-                        // var todo = widget.todoModel.copyWith(
-                        //   categoryId: selectedCategoryId,
-                        //   dateTime: pickedDate,
-                        //   title: controller.text,
-                        // );
-                        // context.read<TodoBloc>().add(
-                        //       UpdateTodoEvent(
-                        //         todoModel: todo,
-                        //       ),
-                        //     );
-                        // LocalNotificationService.localNotificationService
-                        //     .cancelNotificationById(todo.id!);
-                        // LocalNotificationService.localNotificationService
-                        //     .scheduleNotification(
-                        //   cachedTodo: todo,
-                        //   categoryName: context
-                        //       .read<CategoryRepository>()
-                        //       .getNameById(selectedCategoryId),
-                        // );
+                        TodoModel updatedTodo = TodoModel(
+                          id: widget.todoModel.id,
+                          categoryId: selectedCategoryId,
+                          dateTime: pickedDate,
+                          title: controller.text,
+                          isDone: widget.todoModel.isDone,
+                        );
+                        context.read<TodoBloc>().add(
+                              UpdateTodoEvent(
+                                todoModel: updatedTodo,
+                              ),
+                            );
+                        LocalNotificationService.localNotificationService
+                            .cancelNotificationById(updatedTodo.id!);
+                        LocalNotificationService.localNotificationService
+                            .scheduleNotification(
+                          todoModel: updatedTodo,
+                          categoryName: context
+                              .read<CategoryRepository>()
+                              .getNameById(selectedCategoryId),
+                        );
                         Navigator.of(context).pop();
                       }
                     },

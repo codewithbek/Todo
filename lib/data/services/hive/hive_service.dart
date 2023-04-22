@@ -8,8 +8,17 @@ class HiveService {
     return todos!;
   }
 
-  List<TodoModel> getTasks(Box box) {
-    return box.values.toList().cast<TodoModel>();
+  TodoModel getTaskById(Box box, int id) {
+    return box.get(id);
+  }
+
+  List<TodoModel> getTasks(
+    Box box,
+  ) {
+    List<TodoModel> values = box.values.toList().cast<TodoModel>();
+    values.sort((a, b) => a.dateTime.millisecondsSinceEpoch
+        .compareTo(b.dateTime.millisecondsSinceEpoch));
+    return values;
   }
 
   Future<void> addTasks(Box box, TodoModel todo) async {
