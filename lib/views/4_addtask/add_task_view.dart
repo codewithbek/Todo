@@ -115,7 +115,7 @@ class _AddTaskViewState extends State<AddTaskView> {
                         SizedBox(width: 15.w),
                         Text(
                           pickedDate == null
-                              ? 'Not Choosed'
+                              ? 'Not Selected'
                               : "${DateFormat.MMMMd().format(pickedDate!)} ${DateFormat.Hm().format(pickedDate!)} ",
                           style: RubikFont.w500.copyWith(
                             fontSize: 13.sp,
@@ -137,7 +137,6 @@ class _AddTaskViewState extends State<AddTaskView> {
                               categoryName: context
                                   .read<CategoryRepository>()
                                   .getNameById(selectedCategoryId),
-                              key: selectedCategoryId,
                             ),
                           );
                     },

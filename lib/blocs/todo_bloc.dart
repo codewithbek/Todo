@@ -9,7 +9,7 @@ class TodoBloc extends Bloc<TodoEvent, TodoState> {
     on<AddTodoEvent>(addTodo);
     on<GetTodosEvent>(getTodos);
     on<DeleteTodoEvent>(deleteTodo);
-    // on<UpdateTodoEvent>(updateTodo);
+    on<UpdateTodoEvent>(updateTodo);
   }
 
   final TodoRepository todoRepository;
@@ -36,8 +36,8 @@ class TodoBloc extends Bloc<TodoEvent, TodoState> {
     } else {
       Navigator.of(event.context).pop();
       await todoRepository.addTasks(
-        event.key,
         TodoModel(
+          id: event.selectedCategoryId,
           categoryId: event.selectedCategoryId,
           title: event.title,
           dateTime: event.dateTime!,
@@ -74,21 +74,21 @@ class TodoBloc extends Bloc<TodoEvent, TodoState> {
     emit(state.copyWith(todos: todos));
   }
 
-  // void updateTodo(
-  //   UpdateTodoEvent event,
-  //   Emitter<TodoState> emit,
-  // ) {
-  //   var todos = state.todos;
-  //   for (int i = 0; i < todos.length; i++) {
-  //     if (todos[i].id == event.todoModel.id) {
-  //       todos.removeAt(i);
-  //       todos.insert(i, event.todoModel);
-  //       break;
-  //     }
-  //   }
-  //   emit(state.copyWith(todos: todos));
-  //   todoRepository.updateCachedTodo(cachedTodo: event.todoModel);
-  // }
+  void updateTodo(
+    UpdateTodoEvent event,
+    Emitter<TodoState> emit,
+  ) {
+    var todos = state.todos;
+    for (int i = 0; i < todos.length; i++) {
+      if (todos[i].id == event.todoModel.id) {
+        todos.removeAt(i);
+        todos.insert(i, event.todoModel);
+        break;
+      }
+    }
+    emit(state.copyWith(todos: todos));
+    todoRepository.updateToDo(event.todoModel);
+  }
 
   int getTaskCountByCatgory(int categoryId) {
     int count = 0;

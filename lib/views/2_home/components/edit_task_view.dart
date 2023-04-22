@@ -115,37 +115,37 @@ class _EditTaskViewState extends State<EditTaskView> {
                   const Spacer(),
                   AddTaskButton(
                     onTap: () {
-                      // if (controller.text == '') {
-                      //   MessageUtils.getMyToast(
-                      //       message: 'Please fill the field');
-                      // } else if (pickedDate
-                      //         .difference(DateTime.now())
-                      //         .inMinutes <=
-                      //     0) {
-                      //   MessageUtils.getMyToast(
-                      //       message: 'Task time must be in the future');
-                      // } else {
-                      //   var todo = widget.todoModel.copyWith(
-                      //     categoryId: selectedCategoryId,
-                      //     dateTime: pickedDate,
-                      //     title: controller.text,
-                      //   );
-                      //   context.read<TodoBloc>().add(
-                      //         UpdateTodoEvent(
-                      //           todoModel: todo,
-                      //         ),
-                      //       );
-                      //   LocalNotificationService.localNotificationService
-                      //       .cancelNotificationById(todo.id!);
-                      //   LocalNotificationService.localNotificationService
-                      //       .scheduleNotification(
-                      //     cachedTodo: todo,
-                      //     categoryName: context
-                      //         .read<CategoryRepository>()
-                      //         .getNameById(selectedCategoryId),
-                      //   );
-                      //   Navigator.of(context).pop();
-                      // }
+                      if (controller.text == '') {
+                        MessageUtils.getMyToast(
+                            message: 'Please fill the field');
+                      } else if (pickedDate
+                              .difference(DateTime.now())
+                              .inMinutes <=
+                          0) {
+                        MessageUtils.getMyToast(
+                            message: 'Task time must be in the future');
+                      } else {
+                        // var todo = widget.todoModel.copyWith(
+                        //   categoryId: selectedCategoryId,
+                        //   dateTime: pickedDate,
+                        //   title: controller.text,
+                        // );
+                        // context.read<TodoBloc>().add(
+                        //       UpdateTodoEvent(
+                        //         todoModel: todo,
+                        //       ),
+                        //     );
+                        // LocalNotificationService.localNotificationService
+                        //     .cancelNotificationById(todo.id!);
+                        // LocalNotificationService.localNotificationService
+                        //     .scheduleNotification(
+                        //   cachedTodo: todo,
+                        //   categoryName: context
+                        //       .read<CategoryRepository>()
+                        //       .getNameById(selectedCategoryId),
+                        // );
+                        Navigator.of(context).pop();
+                      }
                     },
                     title: 'Save task',
                   ),

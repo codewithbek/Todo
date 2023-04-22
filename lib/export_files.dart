@@ -3,7 +3,6 @@ export 'package:flutter_screenutil/flutter_screenutil.dart';
 export 'package:flutter_svg/flutter_svg.dart';
 export 'package:flutter_local_notifications/flutter_local_notifications.dart';
 export 'package:fluttertoast/fluttertoast.dart';
-
 export 'package:hive_flutter/hive_flutter.dart';
 export 'package:equatable/equatable.dart';
 export 'package:flutter_bloc/flutter_bloc.dart';

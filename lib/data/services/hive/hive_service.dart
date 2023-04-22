@@ -12,17 +12,17 @@ class HiveService {
     return box.values.toList().cast<TodoModel>();
   }
 
-  Future<void> addTasks(Box box, int key, TodoModel todo) async {
-    await box.put(key, todo);
+  Future<void> addTasks(Box box, TodoModel todo) async {
+    await box.put(todo.id, todo);
   }
 
-  Future<void> deleteTaskById(Box box, int key) async {
-    await box.delete(key);
+  Future<void> deleteTaskById(Box box, int id) async {
+    await box.delete(id);
   }
 
-  // Future<void> updateTask(Box box, TodoModel todo ) async {
-  //   await box.put(todo);
-  // }
+  Future<void> updateTask(Box box, TodoModel todo) async {
+    await box.put(todo.id, todo);
+  }
 
   Future<void> deleteAllTasks(Box box) async {
     await box.clear();

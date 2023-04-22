@@ -16,11 +16,11 @@ class TodoModel extends HiveObject {
   late bool isDone;
 
   TodoModel({
+    required this.id,
     required this.categoryId,
     required this.title,
     required this.dateTime,
     this.isDone = false,
-    this.id = 0,
   });
 
   factory TodoModel.fromJson(Map<String, dynamic> json) {
