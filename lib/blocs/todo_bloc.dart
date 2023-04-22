@@ -1,7 +1,5 @@
 import 'dart:math';
-
 import 'package:todo/export_files.dart';
-
 part 'todo_event.dart';
 part 'todo_state.dart';
 
@@ -38,7 +36,7 @@ class TodoBloc extends Bloc<TodoEvent, TodoState> {
     } else {
       Navigator.of(event.context).pop();
       await todoRepository
-          .addTasks(
+          .addTask(
         TodoModel(
           id: Random().nextInt(30000),
           categoryId: event.selectedCategoryId,

@@ -4,75 +4,77 @@ import 'package:todo/export_files.dart';
 class CustomAppBar extends StatelessWidget implements PreferredSize {
   const CustomAppBar({
     Key? key,
-    required this.numberOfTasks,
   }) : super(key: key);
-  final int numberOfTasks;
 
   @override
   Widget build(BuildContext context) {
-    return AppBar(
-      scrolledUnderElevation: 0.0,
-      elevation: 0.0,
-      flexibleSpace: Container(
-        width: double.infinity,
-        height: 108.h,
-        decoration: const BoxDecoration(
-          gradient: LinearGradient(colors: AppColors.appBarGradient),
-        ),
-        child: Stack(
-          clipBehavior: Clip.none,
-          children: [
-            circleItem(
-              size: 211,
-              left: -80,
-              top: -105,
+    return BlocBuilder<TodoBloc, TodoState>(
+      builder: (context, state) {
+        return AppBar(
+          scrolledUnderElevation: 0.0,
+          elevation: 0.0,
+          flexibleSpace: Container(
+            width: double.infinity,
+            height: 120.h,
+            decoration: const BoxDecoration(
+              gradient: LinearGradient(colors: AppColors.appBarGradient),
             ),
-            circleItem(
-              size: 93,
-              left: 299,
-              top: -18,
-            ),
-            Positioned(
-              left: 19.w,
-              right: 19.w,
-              bottom: 11.h,
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.end,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+            child: Stack(
+              clipBehavior: Clip.none,
+              children: [
+                circleItem(
+                  size: 211,
+                  left: -80,
+                  top: -105,
+                ),
+                circleItem(
+                  size: 93,
+                  left: 299,
+                  top: -18,
+                ),
+                Positioned(
+                  left: 19.w,
+                  right: 19.w,
+                  bottom: 11.h,
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(
-                        "Hello Asadbek!",
-                        style: RubikFont.w400.copyWith(
-                          fontSize: 18.sp,
-                          color: AppColors.white,
-                        ),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "Hello Asadbek!",
+                            style: RubikFont.w400.copyWith(
+                              fontSize: 18.sp,
+                              color: AppColors.white,
+                            ),
+                          ),
+                          Text(
+                            "You have ${state.todos.length} tasks",
+                            style: RubikFont.w400.copyWith(
+                              fontSize: 18.sp,
+                              color: AppColors.white,
+                            ),
+                          ),
+                        ],
                       ),
-                      Text(
-                        "Today you have $numberOfTasks tasks",
-                        style: RubikFont.w400.copyWith(
-                          fontSize: 18.sp,
-                          color: AppColors.white,
+                      CircleAvatar(
+                        backgroundColor: Colors.white,
+                        radius: 20.r,
+                        child: Icon(
+                          CupertinoIcons.person_fill,
+                          size: 20.sp,
                         ),
                       ),
                     ],
                   ),
-                  CircleAvatar(
-                    backgroundColor: Colors.white,
-                    radius: 20.r,
-                    child: Icon(
-                      CupertinoIcons.person_fill,
-                      size: 20.sp,
-                    ),
-                  ),
-                ],
-              ),
+                ),
+              ],
             ),
-          ],
-        ),
-      ),
+          ),
+        );
+      },
     );
   }
 

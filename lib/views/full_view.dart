@@ -16,9 +16,7 @@ class _FullViewState extends State<FullView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(
-        numberOfTasks: 0,
-      ),
+      appBar: CustomAppBar(),
       resizeToAvoidBottomInset: false,
       body: screens[currentIndex],
       bottomNavigationBar: buildBottomBar(),
@@ -75,8 +73,8 @@ class _FullViewState extends State<FullView> {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         SizedBox(
-                          height: 24.h,
-                          width: 24.w,
+                          height: 25.h,
+                          width: 25.w,
                           child: currentIndex == 0
                               ? SvgPicture.asset(
                                   Assets.home,
@@ -91,7 +89,7 @@ class _FullViewState extends State<FullView> {
                         Text(
                           'Home',
                           style: RubikFont.w500.copyWith(
-                            fontSize: 10.sp,
+                            fontSize: 12.sp,
                             color: currentIndex == 0
                                 ? AppColors.primaryColor
                                 : AppColors.cDADADA,
@@ -115,8 +113,8 @@ class _FullViewState extends State<FullView> {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         SizedBox(
-                          height: 24.h,
-                          width: 24.w,
+                          height: 25.h,
+                          width: 25.w,
                           child: currentIndex == 1
                               ? SvgPicture.asset(
                                   Assets.tasks,
@@ -131,7 +129,7 @@ class _FullViewState extends State<FullView> {
                         Text(
                           'Tasks',
                           style: RubikFont.w500.copyWith(
-                            fontSize: 10.sp,
+                            fontSize: 12.sp,
                             color: currentIndex == 1
                                 ? AppColors.primaryColor
                                 : AppColors.cDADADA,

@@ -21,7 +21,7 @@ class HiveService {
     return values;
   }
 
-  Future<void> addTasks(Box box, TodoModel todo) async {
+  Future<void> addTask(Box box, TodoModel todo) async {
     await box.put(todo.id, todo);
   }
 

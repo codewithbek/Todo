@@ -103,11 +103,12 @@ class TodoItem extends StatelessWidget {
                         CustomCheckBox(
                             isSelected: cachedTodo.isDone,
                             onChanged: (v) {
-                              // context.read<TodoBloc>().add(
-                              //       UpdateTodoEvent(
-                              //         todoModel: cachedTodo.copyWith(isDone: v),
-                              //       ),
-                              //     );
+                              cachedTodo.isDone = v;
+                              context.read<TodoBloc>().add(
+                                    UpdateTodoEvent(
+                                      todoModel: cachedTodo,
+                                    ),
+                                  );
                             }),
                         SizedBox(width: 11.w),
                         Text(

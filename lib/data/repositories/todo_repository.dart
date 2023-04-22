@@ -1,3 +1,4 @@
+import 'package:intl/intl.dart';
 import 'package:todo/export_files.dart';
 
 class TodoRepository {
@@ -5,9 +6,9 @@ class TodoRepository {
       : _hiveService = hiveService;
   final HiveService _hiveService;
 
-  Future<TodoModel> addTasks(TodoModel todoModel) async {
+  Future<TodoModel> addTask(TodoModel todoModel) async {
     var box = await _hiveService.openbox();
-    await _hiveService.addTasks(box, todoModel);
+    await _hiveService.addTask(box, todoModel);
     return _hiveService.getTaskById(box, todoModel.id);
   }
 
@@ -23,7 +24,6 @@ class TodoRepository {
 
   Future<List<TodoModel>> getTasks() async {
     var box = await _hiveService.openbox();
-    var a = box.get("todos");
     return _hiveService.getTasks(box);
   }
 
@@ -31,4 +31,6 @@ class TodoRepository {
     var box = await _hiveService.openbox();
     await _hiveService.updateTask(box, todo);
   }
+
+ 
 }
