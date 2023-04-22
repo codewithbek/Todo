@@ -35,11 +35,8 @@ class HomeView extends StatelessWidget {
                               return TodoItem(
                                 cachedTodo: state.todos[index],
                                 showDay: index == 0 ||
-                                    state.todos[index].dateTime
-                                            .difference(
-                                                state.todos[index - 1].dateTime)
-                                            .inDays >
-                                        0,
+                                    state.todos[index].dateTime.day !=
+                                        state.todos[index - 1].dateTime.day,
                               );
                             },
                             childCount: state.todos.length,

@@ -21,7 +21,7 @@ class TodoItem extends StatelessWidget {
           Padding(
             padding: EdgeInsets.only(bottom: 15.h, top: 13.h),
             child: Text(
-              DateTime.now().difference(cachedTodo.dateTime).inDays == 0
+              DateTime.now().day == cachedTodo.dateTime.day
                   ? "Today"
                   : DateFormat.MMMEd().format(cachedTodo.dateTime),
               style: RubikFont.w500

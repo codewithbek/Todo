@@ -138,7 +138,7 @@ class _EditTaskViewState extends State<EditTaskView> {
                               ),
                             );
                         LocalNotificationService.localNotificationService
-                            .cancelNotificationById(updatedTodo.id!);
+                            .cancelNotificationById(updatedTodo.id);
                         LocalNotificationService.localNotificationService
                             .scheduleNotification(
                           todoModel: updatedTodo,

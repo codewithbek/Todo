@@ -8,17 +8,17 @@ class SplashView extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
-        child: SizedBox(
-          width: double.infinity,
+        child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              SizedBox(height: 75.h),
               Image.asset(
                 Assets.onboard,
                 width: 179.79.w,
                 height: 195.65.h,
               ),
-              SizedBox(height: 116.h),
+              SizedBox(height: 113.h),
               Text(
                 "Reminders made simple",
                 style: RubikFont.w500.copyWith(

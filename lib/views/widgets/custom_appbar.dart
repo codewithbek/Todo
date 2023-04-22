@@ -64,6 +64,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSize {
                         radius: 20.r,
                         child: Icon(
                           CupertinoIcons.person_fill,
+                          color: AppColors.primaryColor,
                           size: 20.sp,
                         ),
                       ),
